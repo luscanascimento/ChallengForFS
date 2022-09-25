@@ -1,0 +1,57 @@
+<div class="card mt-3">
+  <div class="card-header">
+    <div class="float-left">
+      <font color="061A70">
+        <h4>{{nomeDaTabela}}</h4>
+      </font>
+    </div>
+    <div class="float-right">
+      <button *ngIf="habilitaBotoes" (click)="onCreate()" type="button" class="btn btn-outline-primary">
+        <i class="bi bi-plus-circle"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th *ngFor="let col of colunas" (click)="ordenar(col.propriedade)">
+              {{ col.titulo }}
+              <span *ngIf="chave == col.propriedade">{{ reverse ? "▲" : "▼" }}</span>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="
+              let dado of dadosPaginados | orderBy: chave:reverse;
+              index as i
+            ">
+            <td *ngFor="let col of colunas">
+              {{ col.formatter ? col.formatter(dado, col) : dado[col.propriedade] }}
+            </td>
+            <td class="text-no-wrap">
+              <span class="float-right">
+                <button *ngIf="habilitaBotoes" (click)="onEdit(dado)" class="btn btn-outline-warning mb-1 btn-sm">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button *ngIf="habilitaBotoes" (click)="onDelete(dado)"
+                  class="deltete btn btn-outline-danger mb-1 btn-sm">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination [totalItems]="dados.length" [itemsPerPage]="itemsPorPagina" [(ngModel)]="paginaAtual">
+    </pagination>
+    <ng-template #loading>
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </ng-template>
+  </div>
+</div>

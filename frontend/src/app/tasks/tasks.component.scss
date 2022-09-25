@@ -1,0 +1,12 @@
+thead > tr > th {
+  cursor: pointer;
+}
+
+th,
+td {
+  text-align: left;
+}
+
+.text-no-wrap {
+  white-space: nowrap;
+}

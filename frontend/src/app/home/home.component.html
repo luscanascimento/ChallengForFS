@@ -1,0 +1,23 @@
+<div class="container-cards">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="card">
+      <app-chart
+        [isLoading]="isLoading"
+        title="Atividades por Status"
+        [data]="atividadesPorStatus"
+        serieName="Atividades"
+      ></app-chart>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="card">
+      <app-chart-column
+        [isLoading]="isLoading"
+        titulo="Atividades por Prioridade"
+        [dados]="atividadesPorPrioridade"
+        nomeDaSerie="Atividades"
+      ></app-chart-column>
+    </div>
+  </div>
+</div>

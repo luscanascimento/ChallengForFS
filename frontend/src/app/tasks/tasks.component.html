@@ -1,0 +1,3 @@
+<app-datatable #tasksDataTable (onCreate)="cadastrarTarefa()" (onEdit)="editarTarefa($event)"
+    (onDelete)="modalDelete($event)" [colunas]="colunas" [servico]="crude" [pesquisarFuncao]="pesquisar">
+</app-datatable>
